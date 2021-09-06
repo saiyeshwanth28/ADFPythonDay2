@@ -1,0 +1,19 @@
+E:\pythonProject2\Scripts\python.exe E:/python/pythonProject2/main.py file
+Word dict with Key as counter index and value as the words : {0: 'hi', 1: 'welcome', 2: 'to', 3: 'applied', 4: 'data', 5: 'finance', 6: 'data', 7: 'science', 8: 'private', 9: 'limite
+d', 10: 'madam', 11: 'mom', 12: 'Devarasetty', 13: 'sai', 14: 'Yeshwanth', 15: 'Sree', 16: 'vidyanikethan', 17: 'engineering', 18: 'college', 19: 'Python', 20: 'distribution', 21: 'i
+s', 22: 'available', 23: 'for', 24: 'a', 25: 'wide', 26: 'variety', 27: 'of', 28: 'platforms.', 29: 'You', 30: 'need', 31: 'to', 32: 'download', 33: 'only', 34: 'the', 35: 'binary',
+36: 'code', 37: 'applicable', 38: 'for', 39: 'your', 40: 'platform', 41: 'and', 42: 'install', 43: 'Python.', 44: 'If', 45: 'the', 46: 'binary', 47: 'code', 48: 'for', 49: 'your', 50
+: 'platform', 51: 'is', 52: 'not', 53: 'available,', 54: 'you', 55: 'need', 56: 'a', 57: 'C', 58: 'compiler', 59: 'to', 60: 'compile', 61: 'the', 62: 'source', 63: 'code', 64: 'manua
+lly.', 65: 'Compiling', 66: 'the', 67: 'source', 68: 'code', 69: 'offers', 70: 'more', 71: 'flexibility', 72: 'in', 73: 'terms', 74: 'of', 75: 'choice', 76: 'of', 77: 'features', 78:
+ 'that', 79: 'you', 80: 'require', 81: 'in', 82: 'your', 83: 'installation.', 84: 'palindrome', 85: 'is:madam', 86: 'palindrome', 87: 'is:mom', 88: 'palindrome', 89: 'is:madam', 90:
+'palindrome', 91: 'is:mom', 92: 'palindrome', 93: 'is:madam', 94: 'palindrome', 95: 'is:mom', 96: 'palindrome', 97: 'is:madam', 98: 'palindrome', 99: 'is:mom', 100: 'palindrome', 101
+: 'is:madam', 102: 'palindrome', 103: 'is:mom', 104: 'palindrome', 105: 'is:madam', 106: 'palindrome', 107: 'is:mom', 108: 'palindrome', 109: 'is:madam', 110: 'palindrome', 111: 'is:
+mom', 112: 'palindrome', 113: 'is:madam', 114: 'palindrome', 115: 'is:mom', 116: 'palindrome', 117: 'is:madam', 118: 'palindrome', 119: 'is:mom'}
+list Unique Words: ['is', 'Python.', 'and', 'manually.', 'features', 'distribution', 'code', 'limited', 'Sree', 'for', 'platform', 'terms', 'compiler', 'applicable', 'If', 'need', 'P
+ython', 'binary', 'you', 'hi', 'madam', 'is:madam', 'the', 'Devarasetty', 'Yeshwanth', 'C', 'mom', 'private', 'science', 'download', 'wide', 'platforms.', 'choice', 'welcome', 'in',
+'variety', 'data', 'install', 'is:mom', 'compile', 'sai', 'your', 'vidyanikethan', 'available', 'Compiling', 'to', 'offers', 'that', 'You', 'require', 'engineering', 'finance', 'pali
+ndrome', 'available,', 'applied', 'flexibility', 'installation.', 'college', 'not', 'a', 'source', 'more', 'only', 'of']
+The word that was repeated maximum number of times: palindrome
+totals words with prefix 'to' are: 3
+total words ending with 'ing' are: 2
+

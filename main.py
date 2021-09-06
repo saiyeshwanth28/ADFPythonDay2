@@ -38,7 +38,6 @@ unique_filename = str(uuid.uuid4())
 unique_filename += '.txt'
 with open(unique_filename, "x") as f:
     f.write(str(l)+'\n')
-    f.write(str(l)+'\n')
     f.write("-".join(l))
 
 

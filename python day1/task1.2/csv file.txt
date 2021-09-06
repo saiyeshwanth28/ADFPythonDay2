@@ -1,5 +1,0 @@
-sno,name,age,place
-1,sai,21,hyd
-2,raghu,22,CHN
-3,fazil,34,MUM
-4,gani,32,HYD

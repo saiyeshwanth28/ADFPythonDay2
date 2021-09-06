@@ -19,7 +19,7 @@ with open(sys.argv[1],'r+') as sample:
         elif i.endswith("ing"):
             c1+=1
         elif i==i[::-1] and len(i)>1:
-            sample.write("palindrome is:"+i+'\n')
+            print("palindrome is:"+i+'\n')
     print("totals words with prefix 'to' are: "+str(c)+'\n')
     print("total words ending with 'ing' are: "+ str(c1)+'\n')
 input_file = open('file', 'r')

@@ -1,43 +1,213 @@
-from collections import Counter
+"""
+importing the required packages
+"""
 import sys
+import logging
 import re
 import uuid
-l=[]
-with open(sys.argv[1],'r+') as sample:
-    data=sample.readlines()
-    for line in data:
-        word = line.split()
-        l.extend(word)
-    print('Word dict with Key as counter index and value as the words :',dict(enumerate(l)),end='\n')
-    print('list Unique Words:',list(set(l)),end='\n')
-    c,c1,c3=0,0,0
-    l1=Counter(l)
-    print('The word that was repeated maximum number of times:',l1.most_common(1)[0][0],end='\n')
-    for i in l:
-        if i.startswith("to"):
-            c+=1
-        elif i.endswith("ing"):
-            c1+=1
-        elif i==i[::-1] and len(i)>1:
-            print("palindrome is:"+i+'\n')
-    print("totals words with prefix 'to' are: "+str(c)+'\n')
-    print("total words ending with 'ing' are: "+ str(c1)+'\n')
-input_file = open('file', 'r')
-l1 = list(input_file.read().split(' '))
-l = []
-for i in range(len(l1)):
-    l.extend(re.split('a|e|i|o|u|A|E|I|O|U', l1[i]))
-for i in range(len(l)):
-    if len(l[i]) >= 3:
-        l[i].replace(l[i][2], l[i][2].upper(), 1)
-    if (i+1) % 5 == 0:
-        l[i] = l[i].upper()
-    l[i] = l[i].replace('\n', ';')
-l = ' '.join(l).split()
-unique_filename = str(uuid.uuid4())
-unique_filename += '.txt'
-with open(unique_filename, "x") as f:
-    f.write(str(l)+'\n')
-    f.write("-".join(l))
+from collections import Counter
+
+logging.basicConfig(filename="sample.txt",filemode='a',
+                    format='%(asctime)s %(levelname)s-%(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S')
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+
+class Task:
+    """
+    parent class with read and write operations on files
+    """
+    def __init__(self,filename):
+        """
+        constructor for initialization
+        """
+        self.filename=filename
+        self.words=[]
+        self.un_name=""
 
 
+    def read(self):
+        """
+        this function is to read a file and slit the data into words and append to a list
+        """
+        try:
+            file=open(self.filename,'r+',encoding="UTF-8")
+            data=file.readlines()
+        except :
+            logging.error("exception occurred")
+        for i in data:
+            self.words.extend(i.split())
+        logging.info('file reading and splitting into words')
+        logging.info(self.words)
+
+
+    def write(self):
+        """
+        this funtion is to write an output file
+        """
+        try:
+            output_file=open('self.un_name','w')
+            output_file.write("-".join(self.words)+'\n')
+            logging.info('file written successfully')
+        except:
+            logging.error("exception occurred")
+
+
+class StringOperations(Task):
+    def vowels_split(self):
+        """
+        this funtion is to split the words in the list based on vowels
+        """
+        list_vowels_split=[]
+        try:
+            for i in range(len(self.words)):
+                list_vowels_split.extend(re.split('a|e|i|o|u|A|E|I|O|U',self.words[i]))
+            logging.info("splitting based on vowels")
+            logging.info(list_vowels_split)
+            self.words=list_vowels_split[:]
+        except:
+            logging.error("exception occurred : ")
+
+
+    def counter_index(self):
+        """
+        this funtion is to Create a Word dict with Key as counter
+        index and value as the words present in file and print them on screen.
+        """
+        logging.info("counter index with data as values")
+        return dict(enumerate(self.words))
+
+
+    def unique_list(self):
+        """
+        this funtion is to Convert all words into unique list and print in command line
+        """
+        logging.info("unique list by removing duplicates")
+        return list(set(self.words))
+
+
+    def maximum_repeated(self):
+        """
+        this funtion is to Print the word that was repeated maximum number of times.
+        """
+        try:
+            logging.info("most repeated word in the input file")
+            self.l=Counter(self.words)
+            return self.l.most_common(1)[0][0]
+        except:
+            logging.error("exception occurred : ")
+
+
+    def caps_third_letter(self):
+        """
+        this funtion is to Capitalize 3rd letter of every word
+        """
+        try:
+            for i in range(len(self.words)):
+                if len(self.words[i])>=3:
+                    l=list(self.words[i])
+                    l[2]=l[2].upper()
+                    self.words[i]=''.join(l)
+            logging.info("capitalizing every 3rd letter of a word")
+            logging.info(self.words)
+        except:
+            logging.error("exception occurred : ")
+
+    def caps_fith_word(self):
+        """
+        this funtion is to Capitalize all characters of every 5th word in the file.
+        """
+        try:
+            for i in range(4,len(self.words),5):
+                self.words[i]=self.words[i].upper()
+            logging.info("capitalizing every fifth word")
+            logging.info(self.words)
+        except:
+            logging.error("exception occurred : ")
+
+    def semi_colon_replace(self):
+        """
+        this funtion is to Use ; (semi-colon) for new line
+        """
+        try:
+            logging.info("replacing the new line character with semi colon")
+            for i in range(len(self.words)):
+                self.words[i]=self.words[i].replace('\n',';')
+        except :
+            logging.error("exception occurred : ")
+
+
+
+    def starts_with_to(self):
+        """
+        this funtion is to Print the number of words having prefix with “To” in the input file.
+        """
+        count=0
+        try:
+            for i in self.words:
+                if i.startswith("to") or i.startswith("To"):
+                    count+=1
+        except:
+            logging.error("exception occurred : ")
+
+        return count
+
+
+    def ends_with_ing(self):
+        """
+        Print the number of words ending with “ing” in the input file
+        """
+        count=0
+        try:
+            for i in self.words:
+                if i.endswith("ing"):
+                    count+=1
+        except:
+            logging.error("exception occurred : ")
+        return count
+
+
+    def palindrome(self):
+        """
+        this funtion is to Print the palindrome present in the file.
+        """
+        l=[]
+        try:
+            for i in self.words:
+                if i==i[::-1] and len(i)>1:
+                    l.append(i)
+        except:
+            logging.error("exception occurred : ")
+        return l
+
+
+
+    def unique_file_name(self):
+        """
+        this funtion is to Output file name should be generated with unique name.
+        """
+        try:
+            logging.info("creating an unique file")
+            self.words=' '.join(self.words).split()
+            self.un_fname=str(uuid.uuid4())
+            self.un_fname+='.txt'
+            self.write()
+        except:
+            logging.error("exception occurred : ")
+
+
+
+if __name__=="__main__":
+    x=StringOperations(sys.argv[1])
+    x.read()
+    print("prefix with 'to' : ",x.starts_with_to())
+    print("suffix with 'ing' : ",x.ends_with_ing())
+    print("max repeated : ",x.maximum_repeated())
+    print("palindromes : ",x.palindrome())
+    print("unique words : ",x.unique_list())
+    print("counter index : ",x.counter_index())
+    x.vowels_split()
+    x.caps_third_letter()
+    x.caps_fith_word()
+    x.semi_colon_replace()
+    x.unique_file_name()
